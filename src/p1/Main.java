@@ -1,0 +1,37 @@
+package p1;
+
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        String sentence;
+
+        do {
+            System.out.print("Enter a sentence: ");
+            sentence = input.nextLine();
+            System.out.println("You entered: " + sentence + " ");
+
+            String[] tokens = sentence.split(" +");
+
+            for (String each : tokens) System.out.println(each);
+            System.out.println("number of words = " + tokens.length);
+
+            System.out.println(isFirstCharCapitalized(sentence) ?
+                    "Starts with a cap" :
+                    "Does not start with a cap");
+            System.out.println(isLastCharPunctuation(sentence) ?
+                    "Ends with the correct punctuation" :
+                    "Does not end with the correct punctuation");
+        } while (!sentence.equals(""));
+    }
+
+    static boolean isFirstCharCapitalized(String arg) {
+        return Character.isUpperCase(arg.charAt(0));
+    }
+
+    static boolean isLastCharPunctuation(String arg) {
+        return arg.matches(".*[.?!]");
+    }
+}
